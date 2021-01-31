@@ -1,0 +1,91 @@
+.center {
+  text-align: center;
+}
+
+.hoveritemmenu:hover {
+  background-color: white;
+}
+.hoveritemmenu:hover span {
+  color: black;
+}
+.ss1:hover a {
+  color: red;
+}
+.ss1:hover {
+  background-color: cornflowerblue;
+}
+.hovermenu:hover {
+  background-color: floralwhite;
+} 
+
+.button {
+  float: left;
+}
+.noneli {
+  list-style: none;
+}
+.nonelihover {
+  list-style: none;
+  color: #288ad6;
+}
+.nonelihover:hover {
+  color: #666;
+}
+
+.hoverbtndetails:hover {
+  background-color: white;
+  border-color: black;
+}
+.hoverbtndetails:hover span {
+  color: red;
+}
+
+/* PhuKien */
+.danhmuc:hover {
+  background-color: white;
+}
+.danhmuc:hover span {
+color: black;
+}
+
+/* .porder :nth-child(n){
+  border-left: 1px solid blue;
+  border-top: 1px solid blue;
+
+} */
+/* .porder :nth-child(n+12){
+  border-right:1px solid yellow ;
+} */
+
+.porder :nth-last-child(1){
+  border-right:1px solid yellow ;
+}
+
+/* .porder div:nth-child(2n){
+  border-left: 1px solid blue;
+  border-top: 1px solid blue;
+}
+.porder div:last-child{
+
+  border-right: 1px solid red;
+
+} */
+
+/* .porder:nth-last-child(n){
+  border-left: 1px solid red;
+  border-top: 1px solid red;
+} */
+
+
+.tdhover:hover{
+  border-color: #1a6cf0;
+}
+
+
+.outlinetest{  
+  width: 130px;
+  height: 130px;
+
+outline: solid 5px orange;
+outline-offset: -5px;
+}
