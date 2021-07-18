@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import './App.css';
 import logo from './Image/logo.jpg';
 import ip11 from './Image/ip11.jpg';
 import details1 from './Image/details1.png';
-
 import Button from 'react-bootstrap/Button'
 import { ImCart } from "react-icons/im";
 import { AiOutlineDesktop } from "react-icons/ai";
@@ -127,10 +125,14 @@ function Details() {
                         <div style={{ display: "flex", justifyContent: "center" }}>
                             <img style={{ height: 460, width: 430, display: "flex", justifyContent: "center" }} src={ip11} />
                         </div>
-                        <div style={{ display: "flex", justifyContent: "center" }}>
+                        <div style={{ display: "flex", justifyContent: "center", marginTop: 10, marginBottom: 10 }}>
                             <a style={{ textAlign: "center" }}>Xem hình thực tế sản phẩm</a>
 
                         </div>
+                        <div >
+                            <div className="hinh1"></div>
+                        </div>
+
                     </div>
                     <div style={{ flex: "1.4" }}>
                         <div >
@@ -637,7 +639,7 @@ function Details() {
                                         </div>
                                         <div style={{ display: "flex", alignItems: "center" }} >
                                             <b style={{ fontSize: 14, color: "red" }}>
-                                                 465.000₫  <a style={{color:"gray",textDecorationLine: 'line-through'}}>490.000₫</a>
+                                                465.000₫  <a style={{ color: "gray", textDecorationLine: 'line-through' }}>490.000₫</a>
                                             </b>
                                         </div>
                                     </div>

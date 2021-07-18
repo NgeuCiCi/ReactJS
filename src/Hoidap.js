@@ -31,7 +31,8 @@ import { TiArrowRight } from "react-icons/ti";
 import { TiArrowDown } from "react-icons/ti";
 
 import Dropdown from 'react-bootstrap/Dropdown';
-import { green } from '@material-ui/core/colors';
+import { green, red } from '@material-ui/core/colors';
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -42,8 +43,20 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import ReadMoreReact from 'read-more-react';
+import ActivityTextComponent from './ActivityTextComponent';
+import Profile from './Profile';
+import Demo from './Demo';
 
-
+import DoughnutChart from './DoughnutChart';
+import LineChart from './LineChart';
+import { PieChart } from 'react-minimal-pie-chart';
+import { Line } from 'peity-react';
+import classNames from 'classnames';
+import { GiTrumpetFlag } from 'react-icons/gi';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { Chart } from 'chart.js';
 
 const abc = () => {
     return <div>abc</div>
@@ -58,27 +71,63 @@ const rows = [
     createData('#14255', 'Ronaldo', '11/4/2024', '$10', 'Delivered', 'Edit', avt3),
     createData('#14257', 'Cavani', '25/7/2438', '$31', 'Cancel', 'Edit', avt4),
     createData('#14258', 'Pogba', '1/1/20128', '$1', 'Delivered', 'Edit', avt5),
+    createData('#14258', 'Pogba', '1/1/20128', '$1', 'Delivered', 'Edit', avt5),
 ];
+
+function JAN(jan, text) {
+    return { jan, text };
+}
+const rows1 = [
+    JAN('JAN 22', 'Responded to need “Volunteer Activities”'),
+    JAN('JAN 20', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui deleniti atque Thanh Sang'),
+    JAN('JAN 19', 'Joined the group “Boardsmanship Forum”'),
+    JAN('JAN 17', 'Responded to need “In-Kind Opportunity”'),
+    JAN('JAN 16', 'Sed ut perspiciatis unde omnis iste natus error sit rem.'),
+
+]
+
+// const varx = ['1', '2', '3', '4', '5', '6', '7', 'cn'];
+// const vary = [2, 5, 6, 8, 1, 3, 10];
+// const CHART = document.getElementById('linechart').getContext('2d');
+// const line_chart = new Chart(CHART, {
+//     type: 'line',
+//     data: {
+//         labels: varx,
+//         datasets: [{
+//             label: 'name_data',
+//             data: vary
+//         }]
+//     }
+// });
+
 function Hoidap() {
     const [page, setPage] = useState('Dashboard');
     const [drop1, setdrop1] = useState(true);
     const [UI1, setUI1] = useState(true);
     const [Chart1, setChart1] = useState(true);
-
+    const [Moretext, setMoretext] = useState(true);
+    const [Hidden, setHidden] = useState(true);
+    const [HiddenModal, setHiddenModal] = useState(false);
+    console.log('hoidap');
+    console.log(HiddenModal);
     return (
-        <div >
+        <div onClick={() => {
+            if (Hidden === false) {
+                setHidden(true)
+            }
+        }} >
             {/* Header */}
             <div id="header_ma">
                 <div className="header_ma_1">
-                    <div style={{ backgroundColor: '#333547', height: "100%", width: 240, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div className="Logo" >
                         <img src={logo} alt="Logo" style={{ height: 50, width: 70 }} />
-                        <p style={{ color: 'white', fontSize: 20 }}>Sang</p>
+                        <p className="text_logo" >Sang</p>
                     </div>
 
-                    <div style={{ width: 60, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div className="menu" onClick={() => { setHidden(!Hidden) }} >
                         < AiOutlineMenu size={28} />
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div className="cre_drop" style={{}}>
                         <a >
                             <Dropdown >
                                 <Dropdown.Toggle style={{ fontSize: 17, backgroundColor: '#e9ecef', borderColor: '#e9ecef', color: 'black' }}  >
@@ -99,29 +148,69 @@ function Hoidap() {
                     </div>
                 </div>
                 <div className="header_ma_2">
-                    <div className="header_ma_2_1" >
+                    <div className="List_menu">
+                        <ul className="lv1">
+                            <li>list 1
+                                <ul className="lv2  ">
+                                    <li> item 1</li>
+                                </ul>
+                            </li>
+                            <li>list 2
+                                <ul className="lv2  ">
+                                    <li> item 1</li>
+                                    <li> item 2
+                                    <ul className="lv3  ">
+                                            <li> sub item 1</li>
+                                            <li> sub item 2</li>
+                                            <li> sub item 3</li>
+
+                                        </ul>
+                                    </li>
+                                    <li> item 3</li>
+
+                                </ul>
+                            </li>
+                            <li>list 3
+                                <ul className="lv2  ">
+                                    <li> item 1</li>
+                                    <li> item 2</li>
+                                    <li> item 3</li>
+                                    <li> item 4</li>
+                                    <li> item 5</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div className="input_text" >
+                        <input type="text" placeholder="Search..." />
+                        <span >  <BsSearch color="black" size={20} />
+                        </span>
+                    </div>
+                    <div className="header_ma_2_1 mobile" >
                         <input type="text" placeholder="Search..." style={{ borderRadius: 30, paddingLeft: 14, height: 37, width: 210, backgroundColor: '#e0e0ea', borderColor: '#e0e0ea', borderStyle: 'none', textAlign: 'left', outlineStyle: 'none' }} />
-                        <div style={{ display: 'flex', position: "absolute", right: 11, top: 23 }}>  <BsSearch color="black" size={20} />
+                        <div style={{ display: 'flex', position: "absolute", right: 11 }}>  <BsSearch color="black" size={20} />
                         </div>
                     </div>
-                    <div className="header_ma_2_1" >
+                    <div className="header_ma_2_1 mobile" >
                         <img src={vn} style={{ height: 18, width: 27, marginLeft: 15 }} />
                         <a style={{ marginRight: 15, marginLeft: 8 }}>Viet Nam</a>
                     </div>
-                    <div className="header_ma_2_1">
+                    <div className="header_ma_2_1 mobile">
                         <a style={{ marginRight: 15, marginLeft: 15 }} >
                             <RiFullscreenLine color="#525f80" size={25} />
                         </a>
                     </div>
                     <div className="header_ma_2_1">
                         <a style={{ marginRight: 15, marginLeft: 15 }} >
-                            <BiBell color="#525f80" size={25} />
+                            <BiBell color="#525f80" size={25} onClick={() => { setHiddenModal(false) }} />
                         </a>
                     </div>
-                    <div className="header_ma_2_1">
+                    <div className="header_ma_2_1" onClick={() => { setHiddenModal(true) }} >
                         <img src={tao} style={{ height: 40, width: 40, borderRadius: '50%', marginRight: 15, marginLeft: 15 }} />
 
                     </div>
+                    <Profile show={HiddenModal} setShow={setHiddenModal} />
                     <div className="header_ma_2_1">
                         <a style={{ marginRight: 15, marginLeft: 15 }} >
                             <AiOutlineSetting color="#525f80" size={25} />
@@ -131,7 +220,8 @@ function Hoidap() {
             </div>
             {/* body */}
             <div id="body_ma">
-                <div className="body_ma_1" style={{ width: 240 }}>
+                <div className={Hidden === true ? 'body_ma_1' : 'body_ma_1show'
+                }  >
                     <a style={{ fontSize: 12, paddingLeft: 25, paddingBottom: 10, paddingTop: 10 }}  >MAIN</a>
 
                     <li className="li_body_ma_1" onClick={() => {
@@ -249,6 +339,33 @@ function Hoidap() {
                                 <li className="li_body_ma_1_1a">
                                     <div style={{ height: 30, paddingLeft: 65 }}>Cards </div>
                                 </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Alerts</div>
+                                </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Buttons </div>
+                                </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Cards </div>
+                                </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Alerts</div>
+                                </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Buttons </div>
+                                </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Cards </div>
+                                </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Alerts</div>
+                                </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Buttons </div>
+                                </li>
+                                <li className="li_body_ma_1_1a">
+                                    <div style={{ height: 30, paddingLeft: 65 }}>Cards </div>
+                                </li>
                             </div>
 
                         </li>
@@ -279,7 +396,6 @@ function Hoidap() {
                                         <b className="ma_2_2a1-2a_name" >ORDERS</b>
                                         <span className="ma_2_2a1-2a_num" >1,685 <TiArrowUp size={38} style={{ color: '#02a499' }} />  </span>
                                         <span className="ma_2_2a1-2a_since" >Since last month <TiArrowRight size={30} />  </span>
-
                                     </div>
                                 </div>
                             </div>
@@ -327,6 +443,218 @@ function Hoidap() {
                             </div>
 
                         </div>
+                        <div className="div_line_pie">
+
+
+                            <div className="div_line_pie1">
+
+                                <div className="line_chart">
+
+                                    <LineChart style={{ height: 300 }} />
+
+                                </div>
+                                <div className="Pie_Chart">
+                                    <div className="Pie_Chart_a">
+                                        <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 25 }}> This month</p>
+                                        <b style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: 25, marginBottom: 10 }}> $34,252</b>
+                                        <p>It will be as simple as in fact it will be occidental.</p>
+                                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 20 }}>
+                                            <PieChart style={{ height: 100, width: 100 }}
+                                                data={[
+                                                    { title: 'One', value: 8, color: '#02a499', },
+                                                    { title: 'Two', value: 2, color: '#b2c0d6' },
+                                                ]}
+                                                lineWidth={30}
+                                                startAngle={-90}
+                                                viewBoxSize={20, 20}
+                                                radius={40}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="Pie_Chart_a">
+                                        <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 25 }}> Last month</p>
+                                        <b style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: 25, marginBottom: 10 }}>$36,253</b>
+                                        <p>It will be as simple as in fact it will be occidental.</p>
+                                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 20 }}>
+                                            <PieChart style={{ height: 100, width: 100 }}
+                                                data={[
+                                                    { title: 'One', value: 6, color: '#02a499', },
+                                                    { title: 'Two', value: 4, color: '#b2c0d6' },
+                                                ]}
+                                                lineWidth={30}
+                                                startAngle={-90}
+                                                viewBoxSize={20, 20}
+                                                radius={40}
+                                            />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="div_line_pie2">
+                                <h4 style={{ fontSize: 16, paddingLeft: 20, marginBottom: 20, }}>Sales Analytics</h4>
+                                <div style={{ display: 'flex', paddingLeft: 20 }}>
+                                    <div style={{ flex: 1, paddingLeft: 4 }}>
+                                        <p>Online</p>
+                                        <b>1,542</b>
+                                    </div>
+                                    <div style={{ flex: 1 }}>
+                                        <Line style={{ height: 50, width: 150 }}
+                                            values={[5, 3, 9, 6, 5, 9, 7, 3, 5, 2, 10, 3, 5]}
+                                            height="60" width="110" />
+                                    </div>
+                                </div>
+                                <hr style={{ margin: 20 }} />
+                                <div style={{ display: 'flex', paddingLeft: 20 }}>
+                                    <div style={{ flex: 1, paddingLeft: 4 }}>
+                                        <p>Offline</p>
+                                        <b>6,451</b>
+                                    </div>
+                                    <div style={{ flex: 1 }}>
+                                        <Line style={{ height: 50, width: 150 }}
+                                            values={[5, 3, 9, -6, 5, 9, 7, 3, -5, 2, 10, 3, 5]}
+                                            height="60" width="110" />
+                                    </div>
+                                </div>
+                                <hr style={{ margin: 20 }} />
+                                <div style={{ display: 'flex', paddingLeft: 20 }}>
+                                    <div style={{ flex: 1, paddingLeft: 4 }}>
+                                        <p>Marketing</p>
+                                        <b>84,574</b>
+                                    </div>
+                                    <div style={{ flex: 1 }}>
+                                        <Line style={{ height: 50, width: 150 }}
+                                            values={[5, 3, 9, 6, 5, 9, 7, 3, 5, 2, 10, 3, 5]}
+                                            height="60" width="110" />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div className="activity_table">
+                            <div className="SalesReport_table_1">
+                                {/* <Demo /> */}
+                                <DoughnutChart />
+                                {/* <canvas id="linechart" ></canvas> */}
+                                {/* <div className="btn_test">
+                                    <div >
+                                        <button className="btn_test1">Hover me</button>
+                                    </div>
+                                    <div >
+                                        <button className="btn_test2">
+                                            <span>Hover me</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="Test_border">
+
+                                </div> */}
+                            </div>
+                            <div className="activity_table_2">
+                                <div className="activity_table_2_padin">
+                                    <h4 style={{ textJustify: "inherit", fontSize: 16, marginBottom: 24 }}>Activity</h4>
+                                    <ol className="activity_feed">
+                                        {rows1.map((row) => (
+                                            <li className="feed_item">
+                                                <div className="feed_item_list">
+                                                    <span className="list_date">
+                                                        {row.jan}
+                                                    </span>
+                                                    <span className="list_text">
+                                                        <ActivityTextComponent text={row.text} />
+                                                        {/* {row.text.length > 20 ?
+                                                            <ReadMoreReact style={{ color: 'red' }} text={row.text}
+                                                                min={10}
+                                                                ideal={40}
+                                                                max={row.text.lenght}
+                                                                readMoreText="Xem thêm"
+                                                            />
+                                                            :
+                                                            row.text
+                                                        } */}
+
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ol>
+                                    <div className="div_btn_load">
+                                        <button className="btn_load" > Load More </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="activity_table_3">
+                                {/* <div className="boxArticle">
+                                    {Moretext === true ?
+                                        <div className="area_article ">
+                                            <p style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>Đột phá trong thiết kế thời thượng
+                                        <img src={'https://i.pinimg.com/736x/81/12/29/8112296c722cbf2168857d8756743567.jpg'}
+                                                    style={{ height: 450, width: '80%' }} />
+                                            </p>
+                                            <p className="text_1">Đột phá trong thiết kế thời thượng
+                                        <img className="clip_img" src={'https://i.pinimg.com/736x/81/12/29/8112296c722cbf2168857d8756743567.jpg'}
+                                                />
+                                            </p>
+
+                                            <div className="show-more" onClick={() => { setMoretext(false) }} >
+                                                <p className="readmore">
+                                                    Đọc thêm
+                                        </p>
+                                            </div>
+                                        </div>
+                                        :
+                                        <div className="area_article ">
+                                            <p style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>Đột phá trong thiết kế thời thượng
+                                        <img src={'https://i.pinimg.com/736x/81/12/29/8112296c722cbf2168857d8756743567.jpg'}
+                                                    style={{ height: 450, width: '80%' }} />
+                                            </p>
+                                            <p style={{ display: 'flex', flexDirection: 'column', margin: 0, alignItems: 'center', height: 235 }}>Đột phá trong thiết kế thời thượng
+                                        <img src={'https://i.pinimg.com/736x/81/12/29/8112296c722cbf2168857d8756743567.jpg'}
+                                                    style={{ height: 450, width: '80%', clear: 'both' }} />
+                                            </p>
+                                            <div>
+                                                <p className="text_more">Đột phá trong thiết kế thời thượng
+                                                Đột phá trong thiết kế thời thượng
+                                                Đột phá trong thiết kế thời thượng
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p style={{ display: 'flex', flexDirection: 'column', margin: 0, alignItems: 'center' }}>Đột phá trong thiết kế thời thượng
+                                                Đột phá trong thiết kế thời thượng
+                                                Đột phá trong thiết kế thời thượng
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    }
+                                </div> */}
+                                <div className="activity_table_3a">
+                                    <div style={{ marginRight: 10 }} className="activity_table_3aChil">
+                                        <div className="centerText" >
+                                            <IoIosCheckmarkCircleOutline color={'green'} size={55} />
+                                        </div>
+                                        <h5 className="centerText" style={{ marginTop: 10, marginBottom: 25 }}> Order Successful</h5>
+                                        <p style={{ textAlign: 'center' }} >Thanks you so much for your order.</p>
+                                        <div className="centerText" style={{ marginBottom: 30, marginTop: 20 }}>
+                                            <button className="btn_load " style={{ fontSize: 13 }} >  Check Status </button>
+                                        </div>
+                                    </div>
+                                    <div style={{ marginLeft: 10, borderRadius: 4 }} className="activity_table_3aChila">
+                                        <center> <b > Top Product Sale </b></center>
+                                        <center style={{ fontSize: 40, marginTop: 30, marginBottom: 15, color: 'white' }}> <b > 1452 </b></center>
+                                        <center> <p style={{ color: 'white' }}> Computer </p></center>
+                                        <ActivityTextComponent text={'At solmen va esser necessi far uniform myth Thanh Sang Bùi (Ngêu CiCi)'} />
+
+                                    </div>
+
+                                </div>
+                                <div></div>
+
+                            </div>
+
+                        </div>
                         <div className="table_chat" >
                             <div className="table_chat_a" >
 
@@ -360,9 +688,17 @@ function Hoidap() {
                                                     <TableCell align="left">{row.date}</TableCell>
                                                     <TableCell align="left">{row.amount}</TableCell>
                                                     <TableCell align="left">
-                                                        <span style={{ backgroundColor: '#02a499', borderRadius: 3, paddingLeft: 5, paddingRight: 5, paddingTop: 2, paddingBottom: 2, color: 'white', fontSize: 11 }}>
-                                                            {row.status}
-                                                        </span>
+
+                                                        {row.status === 'Delivered' ?
+                                                            <span style={{ backgroundColor: '#02a499', borderRadius: 3, paddingLeft: 5, paddingRight: 5, paddingTop: 2, paddingBottom: 2, color: 'white', fontSize: 11 }}>{row.status}</span>
+                                                            :
+                                                            row.status === 'Pending' ?
+                                                                <span style={{ backgroundColor: '#f8b425', borderRadius: 3, paddingLeft: 5, paddingRight: 5, paddingTop: 2, paddingBottom: 2, color: 'white', fontSize: 11 }}>{row.status}</span>
+                                                                :
+                                                                <span style={{ backgroundColor: '#ec4561', borderRadius: 3, paddingLeft: 5, paddingRight: 5, paddingTop: 2, paddingBottom: 2, color: 'white', fontSize: 11 }}>{row.status}</span>
+
+                                                        }
+
                                                     </TableCell>
                                                     <TableCell>
                                                         <div style={{ height: 30, width: 40, backgroundColor: '#626ed4', borderColor: '#626ed4', borderRadius: 3, color: 'white', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
@@ -375,7 +711,145 @@ function Hoidap() {
                                     </Table>
                                 </TableContainer>
                             </div>
-                            <div className="table_chat_b"> s</div>
+                            <div className="table_chat_b">
+                                <div className="chat_b1">
+                                    <div className="chat_b1_1">
+                                        <span>Chat</span>
+                                        <div className="chat_b1_1a" >
+                                            <div className="chat_b1_1a_1">
+                                                <div className="chat_b1_1a_1_1" >
+                                                    <div className="avt_time">
+                                                        <img src={avt1} />
+                                                        <span style={{ fontSize: 12 }}>10:00</span>
+                                                    </div>
+
+                                                    <div className="div_chat">
+                                                        <div className="chat_b1_1a_1_1b" > </div>
+                                                        <div className="chat_b1_1a_1_1c" >
+                                                            <b style={{ fontSize: 15, color: '#626ed4' }}>Tao</b>
+                                                            <span style={{ fontSize: 14, paddingLeft: 3 }}>Alo</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="chat_b1_1a_1_1_rep" >
+                                                    <div className="avt_time">
+                                                        <img src={avt2} />
+                                                        <span style={{ fontSize: 12 }}>10:01</span>
+                                                    </div>
+
+                                                    <div className="div_chat">
+                                                        <div className="chat_b1_1a_1_1c_rep" >
+                                                            <b style={{ fontSize: 15, color: '#626ed4' }}>Mày</b>
+                                                            <span style={{ fontSize: 14, paddingLeft: 3 }}>Nghe</span>
+                                                        </div>
+                                                        <div className="chat_b1_1a_1_1b_rep" > </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div className="chat_b1_1a_1_1" >
+                                                    <div className="avt_time">
+                                                        <img src={avt1} />
+                                                        <span style={{ fontSize: 12 }}>10:02</span>
+                                                    </div>
+
+                                                    <div className="div_chat">
+                                                        <div className="chat_b1_1a_1_1b" > </div>
+                                                        <div className="chat_b1_1a_1_1c" >
+                                                            <b style={{ fontSize: 15, color: '#626ed4' }}>Tao</b>
+                                                            <span style={{ fontSize: 14, paddingLeft: 3 }}>Cafe</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="chat_b1_1a_1_1_rep" >
+                                                    <div className="avt_time">
+                                                        <img src={avt2} />
+                                                        <span style={{ fontSize: 12 }}>10:03</span>
+                                                    </div>
+
+                                                    <div className="div_chat">
+                                                        <div className="chat_b1_1a_1_1c_rep" >
+                                                            <b style={{ fontSize: 15, color: '#626ed4' }}>Mày</b>
+                                                            <span style={{ fontSize: 14, paddingLeft: 3 }}>Đâu?</span>
+                                                        </div>
+                                                        <div className="chat_b1_1a_1_1b_rep" > </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div className="chat_b1_1a_1_1" >
+                                                    <div className="avt_time">
+                                                        <img src={avt1} />
+                                                        <span style={{ fontSize: 12 }}>10:04</span>
+                                                    </div>
+
+                                                    <div className="div_chat">
+                                                        <div className="chat_b1_1a_1_1b" > </div>
+                                                        <div className="chat_b1_1a_1_1c" >
+                                                            <b style={{ fontSize: 15, color: '#626ed4' }}>Tao</b>
+                                                            <span style={{ fontSize: 14, paddingLeft: 3 }}>Cũ</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="chat_b1_1a_1_1_rep" >
+                                                    <div className="avt_time">
+                                                        <img src={avt2} />
+                                                        <span style={{ fontSize: 12 }}>10:05</span>
+                                                    </div>
+
+                                                    <div className="div_chat">
+                                                        <div className="chat_b1_1a_1_1c_rep" >
+                                                            <b style={{ fontSize: 15, color: '#626ed4' }}>Mày</b>
+                                                            <span style={{ fontSize: 14, paddingLeft: 3 }}>OK!</span>
+                                                        </div>
+                                                        <div className="chat_b1_1a_1_1b_rep" > </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div className="chat_b1_1a_1_1" >
+                                                    <div className="avt_time">
+                                                        <img src={avt1} />
+                                                        <span style={{ fontSize: 12 }}>10:06</span>
+                                                    </div>
+
+                                                    <div className="div_chat">
+                                                        <div className="chat_b1_1a_1_1b" > </div>
+                                                        <div className="chat_b1_1a_1_1c" >
+                                                            <b style={{ fontSize: 15, color: '#626ed4' }}>Tao</b>
+                                                            <span style={{ fontSize: 14, paddingLeft: 3 }}>OK!</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="chat_b1_1a_1_1" >
+                                                    <div className="avt_time">
+                                                        <img src={avt1} />
+                                                        <span style={{ fontSize: 12 }}>10:06</span>
+                                                    </div>
+
+                                                    <div className="div_chat">
+                                                        <div className="chat_b1_1a_1_1b" > </div>
+                                                        <div className="chat_b1_1a_1_1c" >
+                                                            <b style={{ fontSize: 15, color: '#626ed4' }}>Tao</b>
+                                                            <span style={{ fontSize: 14, paddingLeft: 3 }}>OK!</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="chat_b1_1a_2">
+                                                <div className="div_input_chat">
+                                                    <input placeholder="Enter your text  " className="input_chat" >
+                                                    </input>
+                                                </div>
+                                                <div className="div_send_chat" >
+                                                    <button style={{ height: 35, width: 70, borderColor: '#027e76', backgroundColor: '#027e76', color: 'white', borderStyle: 'solid', borderRadius: 3, textDecoration: 'none', boxSizing: 'border-box' }} > Send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div>
 

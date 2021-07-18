@@ -8,6 +8,7 @@ import Hoidap from './Hoidap';
 import Login from './Login';
 import Details from './Details';
 import PhuKien from './PhuKien';
+import test from './test';
 /* import Icon from './src/Icon';
  */
 function App() {
@@ -24,6 +25,9 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/rigister" component={Rigister} />
           <Route path="/hoidap" component={Hoidap} />
+          <Route path="/test" component={test} />
+
+
 
         </Switch>
 

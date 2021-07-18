@@ -18,10 +18,9 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import { AiFillYoutube } from "react-icons/ai";
 import { AiFillFacebook } from "react-icons/ai";
 import { Box } from '@material-ui/core';
-import HeaderComponent from './HeaderComponent';
 /* import { Button, Container, Divider, Grid, Header, Image, Menu, Segment } from 'semantic-ui-react'
  */
-function Home() {
+function HeaderComponent(props) {
     const history = useHistory();
     const [listData, setListData] = useState(null);
     const [flag, setFlag] = useState('ANDROID');
@@ -1836,349 +1835,47 @@ function Home() {
         .catch(err => {
 
         })
+    console.log(props.a);
 
     return (
-
-
-        <div style={{ background: "#c9c8c5", height: "100%", width: "100%" }} >
-            {/*   div  hình */}
-            {/* onClick={() => { }} */}
-            <HeaderComponent a={"abc"} />
-            <div style={{ paddingRight: "5%", paddingLeft: "5%", height: "40px", backgroundColor: "yellow", display: "flex" }}>
-                <div onClick={() => { history.push('/dienThoai') }} className="hovermenu" style={{ flex: 1, width: "auto", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}> < AiOutlineLaptop /> Điện thoại</div>
-                <div onClick={() => { history.push('/details') }} className="hovermenu" style={{ flex: 0.8, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}> <AiOutlineDesktop /> Laptop</div>
-                <div className="hovermenu" style={{ flex: 0.7, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>< AiOutlineTablet />Tablet</div>
-                <div onClick={() => { history.push('/PhuKien') }} className="hovermenu" style={{ flex: 0.8, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>< FiHeadphones />Phụ kiện</div>
-                <div className="hovermenu" style={{ flex: 1.5, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} ><FiWatch />Đồng hồ thời trang</div>
-                <div className="hovermenu" style={{ flex: 1.5, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} >< CgAppleWatch />Đồng hồ thông minh </div>
-                <div className="hovermenu" style={{ flex: 1, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} >< RiComputerLine />PC, máy in</div>
-                <div className="hovermenu" style={{ flex: 1, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} >Máy cũ giá rẻ</div>
-                <div className="hovermenu" style={{ flex: 1, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}> Sim, thẻ cào</div>
-                <div className="hovermenu" style={{ flex: 1.2, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}> Trả góp điện nước</div>
-
+        <div style={{ paddingRight: "5%", paddingLeft: "5%", height: "40px", backgroundColor: "black", display: "flex" }}>
+            <div>
+                <img onClick={() => history.push('/')} style={{ height: "100%", width: 150 }} src={logo} alt="Logo" />
 
             </div>
-            <div className="center" style={{ backgroundColor: "green", marginTop: 20 }}>
-                <img style={{ width: "90%" }} src={hinh1} alt="" ></img>
+            <div style={{ paddingTop: 3, paddingBottom: 3, position: 'relative', color: "white", flex: 1.5, display: "flex", }}>
+                <input placeholder="Bạn cần tìm gì?  " style={{ display: "flex", flex: 1, borderRadius: 4, borderWidth: 1, borderStyle: "solid" }} >
+
+                </input>
+                <div style={{ display: 'flex', position: "absolute", right: 10, top: 10 }}>
+                    <GiMagnifyingGlass color="black" size={20} />
+                </div>
             </div>
-
-            <div style={{ marginRight: "5%", marginLeft: "5%", display: "flex", backgroundColor: "salmon" }}>
-                {b.map(item => {
-                    return <div style={{ height: "400px", width: "240px", borderStyle: "solid", borderWidth: 1, borderColor: "#c9cdd4", backgroundColor: "violet" }} >
-
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }} >
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div className="center" style={{ paddingTop: "15px" }}>
-                            <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>{item.Ten}</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-
-                            <div style={{ color: "red", fontWeight: "bold" }} >{item.Don_gia_Ban}đ  &emsp;  </div>
-                            <div style={{ textDecorationLine: 'line-through' }}>  {item.Don_gia_Nhap}đ</div>
-                        </div>
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-
-
-                    </div >
-
-                })
-
-                }
+            <div style={{ color: "white", flex: 0.9, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <button style={{ fontSize: 15, color: "white", height: "80%", width: "110px", borderRadius: 5, borderColor: "white", backgroundColor: "black", borderStyle: "solid", borderWidth: 1 }}>
+                    < ImCart />  Giỏ Hàng
+                    </button>
             </div>
-            <div style={{ marginRight: "5%", marginLeft: "5%", display: "flex", flexWrap: "wrap", backgroundColor: "blue", justifyContent: "center" }} >
-                {/* <div>
-                    <h3 style={{ paddingLeft: "10px" ,height:"50px",width:"100%"}}> Khuyen Mai Hot Nhat   </h3>
-                </div> */}
-
-                {a.map(item => {
-                    return <div style={{ height: "400px", width: "240px", borderStyle: "solid", borderWidth: 1, borderColor: "#c9cdd4", backgroundColor: "violet" }} >
-
-                        <div style={{ fontSize: "40" }} >
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow", display: "flex", alignItems: "center" }}><a style={{ display: "flex", alignItems: "center" }}>Tra gop 0% </a> </button>
-                        </div>
-                        <div className="center" style={{ paddingTop: "15px" }}>
-                            <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>{item.Ten}</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-
-                            <div style={{ color: "red", fontWeight: "bold" }} >{item.Don_gia_Ban}đ  &emsp;  </div>
-                            <div style={{ textDecorationLine: 'line-through' }}>  {item.Don_gia_Nhap}đ</div>
-                        </div>
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-
-                    </div >
-
-                })}
+            <div style={{ color: "white", flex: 1.2, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                Lịch Sử Mua Hàng
+                </div>
+            <div style={{ fontSize: 14, color: "white", flex: 1.5, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                Viettel Tặng 20% giá trị thẻ nạp-10/10
+                </div>
+            <div className="hoveritemmenu" onClick={() => { history.push('/reponsive') }} style={{ color: "white", flex: 1.1, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <span> 24H Công Nghệ</span>
             </div>
-
-            {/* div khuyen mai */}
-            {/* <div style={{ marginRight: "5%", marginLeft: "5%", height: "400px", background: "white" }}>
-
-                <h3 style={{ paddingLeft: "10px" }}> Khuyen Mai Hot Nhat   </h3>
-                <div style={{ marginTop: "5px", display: "inline-flex", width: "100%" }} >
-
-                    {listData !== null ? listData.map(item => {
-                        return <div style={{ height: "400px", width: "20%" }} >
-
-                            <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }} >
-                                <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                            </div>
-                            <div className="center" style={{ paddingTop: "15px" }}>
-                                <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                            </div>
-                            <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>{item.Ten}</div>
-                            <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-
-                                <div style={{ color: "red", fontWeight: "bold" }} >{item.Nhom_Dien_thoai.Ten}đ  &emsp;  </div>
-                                <div style={{ color: "red", fontWeight: "bold" }} >{item.Don_gia_Ban}đ  &emsp;  </div>
-                                <div style={{ textDecorationLine: 'line-through' }}>  {item.Don_gia_Nhap}đ</div>
-                            </div>
-                            <div>
-                                <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                            </div>
-
-                        </div >
-                    })
-                        :
-                        null
-                    }
-
-                </div>
-            </div> */}
-
-            {/*  div noi bat */}
-            <div style={{ marginRight: "5%", marginLeft: "5%", marginTop: "10px", height: "900px", background: "white" }}>
-                <div style={{ width: "100%", height: "50px", display: "flex", paddingBottom: "10px", borderBottomStyle: "solid", borderBottomWidth: 1, borderBottomColor: "#c9c8c5" }}>
-                    <h3 style={{ width: "30%", paddingLeft: "10px" }}>Dien Thoai Noi Bat</h3>
-                    <div style={{ height: "100%", width: "70%", paddingRight: "5px", }}>
-                        <ul style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" }}  >
-                            <li style={{ color: "blue", listStyle: "none", height: "100%", display: "flex", alignItems: "center" }}> Samsung Galaxy note moi</li>
-                            <li style={{ color: "blue", listStyle: "none", height: "100%", display: "flex", alignItems: "center" }}>  iPhone 11 Pro max</li>
-                            <li style={{ color: "blue", listStyle: "none", height: "100%", display: "flex", alignItems: "center" }}>iPhone 12</li>
-                            <li style={{ color: "blue", listStyle: "none", height: "100%", display: "flex", alignItems: "center" }}>Redmi note 9S</li>
-                            <li style={{ color: "blue", listStyle: "none", height: "100%", display: "flex", alignItems: "center" }}>OPPO Reno4</li>
-
-                        </ul>
-                    </div>
-                </div>
-
-                <div style={{ marginTop: "5px", display: "inline-flex", width: "100%" }}>
-                    <div style={{ height: "400px", width: "40%" }}>
-                        <div className="center" >
-                            <img style={{ height: "250px", width: "80%" }} src={note} alt=""></img>
-                        </div>
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }}>
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>Samsung Galaxy 20 Ultra</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-                            <div style={{ color: "red", fontWeight: "bold" }} >29.990.000đ   </div>
-                        </div>
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-                    </div>
-
-                    <div style={{ height: "400px", width: "20%" }} >
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }}>
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div className="center" style={{ paddingTop: "15px" }}>
-                            <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>iPhone 11.Pro Max 64GB</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-                            <div style={{ color: "red", fontWeight: "bold" }} >33.990.000đ  &emsp;  </div>
-                            <div style={{ textDecorationLine: 'line-through' }}>  30.000.000đ</div>
-                        </div>
-
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-                    </div >
-
-                    <div style={{ height: "400px", width: "20%" }} >
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }}>
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div className="center" style={{ paddingTop: "15px" }}>
-                            <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>iPhone 11.Pro Max 64GB</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-                            <div style={{ color: "red", fontWeight: "bold" }} >33.990.000đ  &emsp;  </div>
-                            <div style={{ textDecorationLine: 'line-through' }}>  30.000.000đ</div>
-                        </div>
-
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-                    </div >
-
-                    <div style={{ height: "400px", width: "20%" }} >
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }}>
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div className="center" style={{ paddingTop: "15px" }}>
-                            <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>iPhone 11.Pro Max 64GB</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-                            <div style={{ color: "red", fontWeight: "bold" }} >33.990.000đ  &emsp;  </div>
-                            <div style={{ textDecorationLine: 'line-through' }}>  30.000.000đ</div>
-                        </div>
-
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-                    </div >
-                </div>
-
-
-                <div style={{ marginTop: "5px", display: "inline-flex", width: "100%" }}>
-                    <div style={{ height: "400px", width: "40%" }}>
-                        <div className="center" >
-                            <img style={{ height: "250px", width: "80%" }} src={note} alt=""></img>
-                        </div>
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }}>
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>Samsung Galaxy 20 Ultra</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-                            <div style={{ color: "red", fontWeight: "bold" }} >29.990.000đ   </div>
-                        </div>
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-                    </div>
-
-                    <div style={{ height: "400px", width: "20%" }} >
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }}>
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div className="center" style={{ paddingTop: "15px" }}>
-                            <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>iPhone 11.Pro Max 64GB</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-                            <div style={{ color: "red", fontWeight: "bold" }} >33.990.000đ  &emsp;  </div>
-                            <div style={{ textDecorationLine: 'line-through' }}>  30.000.000đ</div>
-                        </div>
-
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-                    </div >
-
-                    <div style={{ height: "400px", width: "20%" }} >
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }}>
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div className="center" style={{ paddingTop: "15px" }}>
-                            <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>iPhone 11.Pro Max 64GB</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-                            <div style={{ color: "red", fontWeight: "bold" }} >33.990.000đ  &emsp;  </div>
-                            <div style={{ textDecorationLine: 'line-through' }}>  30.000.000đ</div>
-                        </div>
-
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-                    </div >
-
-                    <div style={{ height: "400px", width: "20%" }} >
-                        <div style={{ fontSize: "40", marginTop: "10px", paddingLeft: "10px" }}>
-                            <button style={{ height: "25px", borderRadius: 5, background: "yellow", borderColor: "yellow" }}> Tra gop 0%</button>
-                        </div>
-                        <div className="center" style={{ paddingTop: "15px" }}>
-                            <img style={{ height: "200px", width: "180px" }} src={ip11} alt="" ></img>
-                        </div>
-                        <div style={{ paddingTop: "15px", paddingLeft: "15px" }}>iPhone 11.Pro Max 64GB</div>
-                        <div style={{ display: "flex", paddingTop: "5px", paddingLeft: "15px" }}>
-                            <div style={{ color: "red", fontWeight: "bold" }} >33.990.000đ  &emsp;  </div>
-                            <div style={{ textDecorationLine: 'line-through' }}>  30.000.000đ</div>
-                        </div>
-
-                        <div>
-                            <div style={{ color: "#b0adac", paddingLeft: "15px", paddingTop: "5px" }} >111 đánh giá</div>
-                        </div>
-                    </div >
-                </div>
-
+            <div onClick={() => { history.push('/hoidap') }} className="hoveritemmenu" style={{ color: "white", flex: 0.8, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <span>  Hỏi Đáp</span>
             </div>
-
-
-
-
-
-
-            <Box background="red" display="flex" justifyContent="center">
-                <Box style={{ height: "100px", width: "100px" }} border={1} borderColor="primary.main" />
-            </Box>
-
-            <div style={{ width: "100%", backgroundColor: "white" }}>
-                <div style={{ height: "200px", marginRight: "5%", marginLeft: "5%" }}>
-
-                    <div style={{ display: "flex", justifyContent: "space-around", paddingTop: 20 }}>
-                        <div style={{ flex: 1, marginLeft: 0 }}>
-                            <li style={{ height: 30 }} className="nonelihover">Tìm hiểu về mua trả  góp</li>
-                            <li style={{ height: 30 }} className="nonelihover">Lịch sử mua hàng</li>
-                            <li style={{ height: 30 }} className="nonelihover">Chính sách bảo hành</li>
-                            <li style={{ height: 30 }} className="nonelihover">Chính sách đổi trả</li>
-                            <li style={{ height: 30, display: "flex", alignItems: "center" }} className="nonelihover">Xem thêm< TiArrowSortedDown size={16} /> </li>
-                        </div>
-                        <div style={{ flex: 1 }}>
-                            <li style={{ height: 30 }} className="nonelihover">Giới thiệu công ty</li>
-                            <li style={{ height: 30 }} className="nonelihover">Tuyển dụng</li>
-                            <li style={{ height: 30 }} className="nonelihover">Gửi góp ý, khiếu nại</li>
-                            <li style={{ height: 30 }} className="nonelihover">Tìm siêu thị</li>
-                            <li style={{ height: 30 }} className="nonelihover">Xem bản mobile</li>
-                        </div>
-                        <div style={{ flex: 1 }}>
-
-                            <li style={{ height: 30 }} className="noneli">Gọi mua hàng <b>1800.1060</b> (7:30 - 22:00)</li>
-                            <li style={{ height: 30 }} className="noneli">Gọi khiếu nại  <b> 1800.1062 </b>(8:00 - 21:30)</li>
-                            <li style={{ height: 30 }} className="noneli">Gọi bảo hành  <b> 1800.1064</b> (8:00 - 21:00)</li>
-                            <li style={{ height: 30 }} className="noneli">Kỹ thuật    <b> 1800.1763</b> (7:30 - 22:00)</li>
-                        </div>
-                        <div style={{ flex: 0.6 }}>
-                            <div style={{ width: "130px", marginRight: 10 }}>
-                                <li className="noneli" style={{ display: "flex", fontSize: 12 }}>
-                                    <a style={{ display: "flex", alignContent: "center" }}> <AiFillFacebook color="blue" size={18} />3.5tr </a>
-                                    <hr />
-                                    <a style={{ display: "flex", alignContent: "center" }}> < AiFillYoutube color="red" size={18} />750k </a>
-                                </li>
-                                <li className="noneli" style={{ fontSize: 12 }}>
-                                    website cùng tập đoàn
-                            </li>
-                                <li className="noneli" >
-                                    <img style={{ height: 19, width: 110 }} src="https://miro.medium.com/max/1260/0*KnirBXUsKfZZFtSr.jpg" />
-                                </li>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-                <div style={{ backgroundColor: "#f8f8f8", height: "40px", width: "100%", fontSize: 20, display: "flex", justifyContent: "center", alignItems: "center", color: "#737a75" }}>
-                    © CoppyRight 2020 Bùi Thanh Sang
-                </div>
-
+            <div onClick={() => { history.push('/login') }}
+                className="hoveritemmenu" style={{ color: "white", flex: 0.8, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <span>  SIGN IN in</span>
             </div>
-        </div >
+        </div>
 
 
     );
 }
 
-export default Home;
+export default HeaderComponent;
